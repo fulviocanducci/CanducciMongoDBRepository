@@ -1,0 +1,22 @@
+﻿@model Web.Models.People
+<form asp-action="Edit" asp-controller="Peoples" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+    <div>
+        <label>Nome</label>
+        <input type="text" asp-for="Name" />
+    </div>
+    <div>
+        <label>Criado</label>
+        <input type="text" asp-for="Created" />
+    </div>
+    <div>
+        <label>Valor</label>
+        <input type="text" asp-for="Value" />
+    </div>
+    <div>
+        <label>Valor</label>
+        <input type="checkbox" asp-for="Active" />
+    </div>
+    <button type="submit" class="btn btn-primary">Editar</button>
+</form>

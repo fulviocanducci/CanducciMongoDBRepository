@@ -17,8 +17,9 @@ namespace Canducci.MongoDB.Cls
             IConnect connect = new Connect(config);
             RepositoryCreditImpl rep = new RepositoryCredit(connect);
 
-            //Credit model = new Credit();
-            //model.Name = "Bol.com.br";
+            Credit model = new Credit();
+            model.Name = "redeTV.com.br";
+            rep.Add(model);
 
             //var _id = rep.CreateObjectId("58ba1fbcaa0ae801dc886dec");
             //Credit model = rep.Find(x => x.Id == _id);
@@ -37,7 +38,10 @@ namespace Canducci.MongoDB.Cls
             //var r = rep.All(a => a.Name.Contains("o"), a => a.Name)
             //    .ToList();
 
-            var result = rep.All().ToList();
+            foreach (var item in rep.All())
+            {
+                System.Console.WriteLine($"{item.Id} - {item.Name}");
+            }
 
             System.Console.ReadKey();
                                                                      

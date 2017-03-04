@@ -35,7 +35,8 @@ namespace Canducci.MongoDB.Contracts
         Task<IList<T>> AllAsync<Tkey>(Expression<Func<T, bool>> filter, Expression<Func<T, Tkey>> orderBy);
 
         bool Delete(Expression<Func<T, bool>> filter);
-        
+        Task<bool> DeleteAsync(Expression<Func<T, bool>> filter);
+
         IQueryable<T> Queryable();
          
         ObjectId CreateObjectId(string value);

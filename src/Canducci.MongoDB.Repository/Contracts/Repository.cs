@@ -197,6 +197,13 @@ namespace Canducci.MongoDB.Contracts
                 .DeletedCount > 0;
         }
 
+        public async Task<bool> DeleteAsync(Expression<Func<T, bool>> filter)
+        {
+            DeleteResult result = await _collection.
+                DeleteOneAsync(filter);
+            return result.DeletedCount > 0;
+        }
+
         #endregion
 
         #region queryAble
@@ -256,10 +263,7 @@ namespace Canducci.MongoDB.Contracts
                 }
                 disposed = true;
             }
-        }
-
-        
-
+        }   
         ~Repository()
         {
             Dispose(false);

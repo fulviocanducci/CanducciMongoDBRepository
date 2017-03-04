@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Web.Models.People>
+
+@{ 
+    double sum = 0;
+}
+<a asp-action="Create" asp-controller="Peoples">Novo</a>
+<table class="table">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Criado</td>
+        <td>Valor</td>
+        <td>Status</td>
+        <td>...</td>
+    </tr>   
+    @if (Model != null)
+    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Created</td>
+                <td style="text-align:right">@item.Value.ToString("N2")</td>
+                <td>@item.Active</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Peoples" asp-route-id="@item.Id">Editar</a>
+                </td>
+            </tr>
+            { 
+                sum += item.Value;
+            }
+        }
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="text-align:right">@sum.ToString("N2")</tdstyle="text-align:right">
+        <td></td>            
+        <td></td>
+    </tr>
+</table>

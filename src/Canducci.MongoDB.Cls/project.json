@@ -1,0 +1,23 @@
+﻿{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "version": "1.1.0",
+      "type": "platform"
+    },
+    "MongoDB.Bson": "2.4.2",
+    "MongoDB.Driver": "2.4.2",
+    "MongoDB.Driver.Core": "2.4.2",
+     "Canducci.MongoDB.Repository": "1.0.1-*"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "dnxcore50"
+    }
+  }
+}

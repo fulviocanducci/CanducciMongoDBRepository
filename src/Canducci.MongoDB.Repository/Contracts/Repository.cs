@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-
+using System.Reflection; 
 namespace Canducci.MongoDB.Contracts
 {
     public abstract class Repository<T> : IRepository<T>
@@ -20,8 +20,8 @@ namespace Canducci.MongoDB.Contracts
 
         public Repository(IConnect connect)
         {
-            SetCollectionName();
-            SetConnectAndCollection(connect);
+            setCollectionName();
+            setConnectAndCollection(connect);
         }
 
         #region add 
@@ -109,7 +109,6 @@ namespace Canducci.MongoDB.Contracts
         #endregion
 
         #region all
-
         
         public IEnumerable<T> All()
         {
@@ -161,6 +160,36 @@ namespace Canducci.MongoDB.Contracts
         }
         #endregion
 
+        #region count
+
+        public long Count()
+        {
+            return _collection
+                .Count(Builders<T>.Filter.Empty);
+        }
+
+        public long Count(Expression<Func<T, bool>> filter, CountOptions options = null)
+        {
+            return _collection
+                .Count(filter, options);
+        }
+
+        public async Task<long> CountAsync()
+        {
+            return await _collection
+                .CountAsync(Builders<T>.Filter.Empty);
+        }
+
+        public async Task<long> CountAsync(Expression<Func<T, bool>> filter, CountOptions options = null)
+        {
+            return await _collection
+                .CountAsync(filter, options);
+        }
+
+        #endregion
+
+        #region delete
+
         public bool Delete(Expression<Func<T, bool>> filter)
         {
             return _collection
@@ -168,30 +197,42 @@ namespace Canducci.MongoDB.Contracts
                 .DeletedCount > 0;
         }
 
+        #endregion
+
+        #region queryAble
+
         public IQueryable<T> Queryable()
         {
             return _collection
                 .AsQueryable();
         }
 
+        #endregion
+
+        #region objectId
+
         public ObjectId CreateObjectId(string value)
         {
             return ObjectId.Parse(value);
         }
 
+        #endregion
+
         #region Internal
-        internal void SetCollectionName()
-        {
-            MongoCollectionName mongoCollectionName =
-                (MongoCollectionName)
-                System.Reflection.CustomAttributeExtensions.GetCustomAttribute(
-                    System.Reflection.Assembly.GetEntryAssembly(), typeof(MongoCollectionName)); 
-            _collectionName = mongoCollectionName != null ?
-                mongoCollectionName.TableName :
-                typeof(T).Name.ToLower();
+        internal void setCollectionName()
+        {               
+             MongoCollectionName mongoCollectionName = (MongoCollectionName)typeof(T)
+                .GetTypeInfo()
+                .GetCustomAttribute(typeof(MongoCollectionName));
+
+            _collectionName = mongoCollectionName != null 
+                ? mongoCollectionName.TableName 
+                : typeof(T).Name.ToLower();
+
             mongoCollectionName = null;
         }
-        internal void SetConnectAndCollection(IConnect connect)
+
+        internal void setConnectAndCollection(IConnect connect)
         {
             _connect = connect;
             _collection = _connect.Collection<T>(_collectionName);
@@ -224,36 +265,7 @@ namespace Canducci.MongoDB.Contracts
             Dispose(false);
         }
         private bool disposed = false;
-        #endregion Dispose            
-
-
-        #region count
-
-        public long Count()
-        {
-            return _collection
-                .Count(Builders<T>.Filter.Empty);
-        }
-
-        public long Count(Expression<Func<T, bool>> filter, CountOptions options = null)
-        {
-            return _collection
-                .Count(filter, options);
-        }
-
-        public async Task<long> CountAsync()
-        {
-            return await _collection
-                .CountAsync(Builders<T>.Filter.Empty);
-        }
-
-        public async Task<long> CountAsync(Expression<Func<T, bool>> filter, CountOptions options = null)
-        {
-            return await _collection
-                .CountAsync(filter, options);
-        }
-
-        #endregion
+        #endregion Dispose                    
 
     }
 }

@@ -20,7 +20,7 @@ namespace Canducci.MongoDB.Cls
             //Credit model = new Credit();
             //model.Name = "Bol.com.br";
 
-            var _id = rep.CreateObjectId("58ba1fbcaa0ae801dc886dec");
+            //var _id = rep.CreateObjectId("58ba1fbcaa0ae801dc886dec");
             //Credit model = rep.Find(x => x.Id == _id);
             //model.Name += " Alteração";
 
@@ -32,10 +32,12 @@ namespace Canducci.MongoDB.Cls
 
             //rep.Update(x => x.Id == _id, b);
 
-            System.Console.WriteLine(rep.Count(a => a.Name.Contains("b")));
+            //System.Console.WriteLine(rep.Count(a => a.Name.Contains("b")));
 
-            var r = rep.All(a => a.Name.Contains("o"), a => a.Name)
-                .ToList();
+            //var r = rep.All(a => a.Name.Contains("o"), a => a.Name)
+            //    .ToList();
+
+            var result = rep.All().ToList();
 
             System.Console.ReadKey();
                                                                      

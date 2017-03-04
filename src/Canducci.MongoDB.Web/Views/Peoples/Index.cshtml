@@ -1,9 +1,18 @@
 ﻿@model IEnumerable<Web.Models.People>
-
+@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
 @{ 
     double sum = 0;
+    //var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    //@requestCulture.RequestCulture.Culture.Name
 }
-<a asp-action="Create" asp-controller="Peoples">Novo</a>
+
+<br />
+<a asp-action="Create" asp-controller="Peoples" class="btn btn-block btn-success">Novo</a>
+<br />
 <table class="table">
     <tr>
         <td>Id</td>
@@ -24,8 +33,8 @@
                 <td style="text-align:right">@item.Value.ToString("N2")</td>
                 <td>@item.Active</td>
                 <td>
-                    <a asp-action="Edit" asp-controller="Peoples" asp-route-id="@item.Id">Editar</a>
-                    <a asp-action="Details" asp-controller="Peoples" asp-route-id="@item.Id">Visualizar</a>
+                    <a asp-action="Edit" asp-controller="Peoples" asp-route-id="@item.Id" class="btn btn-primary">Editar</a>
+                    <a asp-action="Details" asp-controller="Peoples" asp-route-id="@item.Id" class="btn btn-info">Visualizar</a>
                 </td>
             </tr>
             { 

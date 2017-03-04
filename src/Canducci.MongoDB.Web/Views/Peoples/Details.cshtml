@@ -1,18 +1,21 @@
 ﻿@model Web.Models.People
+<br />
 <div>
-    <label>Nome</label>
+    <label class="label label-primary">Nome</label>
     <text>@Model.Name</text>    
 </div>
 <div>
-    <label>Criado</label>
-    <text>@Model.Created</text>        
+    <label class="label label-primary">Criado</label>
+    <text>@Model.Created.ToString("dd/MM/yyyy")</text>        
 </div>
 <div>
-    <label>Valor</label>
+    <label class="label label-primary">Valor</label>
     <text>@Model.Value</text>     
 </div>
 <div>
-    <label>Valor</label>    
+    <label class="label label-primary">Valor</label>    
     <text>@Model.Active</text>    
 </div>
-<a asp-action="Edit" asp-controller="Peoples" asp-route-id="@Model.Id">Editar</a>
+<br />
+<a  class="btn btn-primary" asp-action="Edit" asp-controller="Peoples" asp-route-id="@Model.Id">Editar</a>
+<a asp-action="Index" asp-controller="Peoples" class="btn btn-info">Cancelar</a>

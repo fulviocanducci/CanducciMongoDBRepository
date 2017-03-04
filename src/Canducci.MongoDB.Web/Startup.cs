@@ -11,6 +11,8 @@ using Canducci.MongoDB.Repository.Connection;
 using Canducci.MongoDB.Web.Models;
 using Web.Models;
 using Canducci.MongoDB.Connection;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace Canducci.MongoDB.Web
 {
@@ -40,8 +42,10 @@ namespace Canducci.MongoDB.Web
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            services.AddMvc();
+            // Add Mvc services
+            services.AddMvc();               
 
+            // Add DI e IOC Container
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddScoped<IConfig, Config>();
             services.AddScoped<IConnect, Connect>();
@@ -54,7 +58,7 @@ namespace Canducci.MongoDB.Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseApplicationInsightsRequestTelemetry();
+            //app.UseApplicationInsightsRequestTelemetry();
 
             if (env.IsDevelopment())
             {
@@ -66,7 +70,9 @@ namespace Canducci.MongoDB.Web
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseApplicationInsightsExceptionTelemetry();
+            //app.UseApplicationInsightsExceptionTelemetry();
+
+            ConfigureCulture(app); 
 
             app.UseStaticFiles();
 
@@ -75,6 +81,21 @@ namespace Canducci.MongoDB.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+        }
+
+        public void ConfigureCulture(IApplicationBuilder app)
+        {
+            var supportedCultures = new[]
+            {
+                new CultureInfo("pt-BR")
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("pt-BR"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
             });
         }
     }

@@ -22,7 +22,7 @@ namespace Canducci.MongoDB.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
-            ObjectId _id = Repository.CreateObjectId(id);
+            ObjectId _id = Repository.CreateObjectId(id);            
             return View(await Repository.FindAsync(x => x.Id == _id));
         }
 
@@ -60,7 +60,7 @@ namespace Canducci.MongoDB.Web.Controllers
             await Repository.EditAsync(x => x.Id == _id, people);
             if (people.Id != ObjectId.Empty)
             {
-                RedirectToAction("Edit", new { id = people.Id });
+                return RedirectToAction("Edit", new { id = people.Id });
             }
             return RedirectToAction("Index");
         }

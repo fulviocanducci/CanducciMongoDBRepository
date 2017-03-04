@@ -25,6 +25,7 @@
                 <td>@item.Active</td>
                 <td>
                     <a asp-action="Edit" asp-controller="Peoples" asp-route-id="@item.Id">Editar</a>
+                    <a asp-action="Details" asp-controller="Peoples" asp-route-id="@item.Id">Visualizar</a>
                 </td>
             </tr>
             { 
@@ -36,7 +37,7 @@
         <td></td>
         <td></td>
         <td></td>
-        <td style="text-align:right">@sum.ToString("N2")</tdstyle="text-align:right">
+        <td style="text-align:right">@sum.ToString("N2")</td>
         <td></td>            
         <td></td>
     </tr>

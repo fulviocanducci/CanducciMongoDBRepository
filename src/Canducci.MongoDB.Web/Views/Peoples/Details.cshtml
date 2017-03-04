@@ -1,0 +1,18 @@
+﻿@model Web.Models.People
+<div>
+    <label>Nome</label>
+    <text>@Model.Name</text>    
+</div>
+<div>
+    <label>Criado</label>
+    <text>@Model.Created</text>        
+</div>
+<div>
+    <label>Valor</label>
+    <text>@Model.Value</text>     
+</div>
+<div>
+    <label>Valor</label>    
+    <text>@Model.Active</text>    
+</div>
+<a asp-action="Edit" asp-controller="Peoples" asp-route-id="@Model.Id">Editar</a>

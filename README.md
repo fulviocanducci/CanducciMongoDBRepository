@@ -3,7 +3,8 @@
 
 [![Canducci MongoDB Repository Core](http://i1308.photobucket.com/albums/s610/maryjanexique/highres_99553512_zpssfgw2lhb.jpeg)](https://www.nuget.org/packages/Canducci.MongoDB.Repository.Core/)
 
-[![NuGet](https://img.shields.io/nuget/v/Canducci.MongoDB.Repository.Core.svg?style=plastic&label=version)](https://www.nuget.org/packages/Canducci.MongoDB.Repository.Core/)
+
+[![NuGet Badge](https://buildstats.info/nuget/Canducci.MongoDB.Repository.Core)](https://www.nuget.org/packages/Canducci.MongoDB.Repository.Core/)
 
 ## Install Package (NUGET)
 

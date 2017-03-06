@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Web.Models;
 using MongoDB.Bson;
 using Canducci.MongoDB.Exceptions;
-//using Microsoft.Extensions.Localization;
-
 namespace Canducci.MongoDB.Web.Controllers
 {
     public class PeoplesController : Controller

@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{022758C4-4C7D-4605-B903-DE453CEE7FFD}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Canducci.MongoDB.Repository", "src\Canducci.MongoDB.Repository\Canducci.MongoDB.Repository.xproj", "{7E6678A4-8772-48A3-B484-403CCAC3549B}"

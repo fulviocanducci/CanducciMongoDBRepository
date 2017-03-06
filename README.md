@@ -1,12 +1,11 @@
 # Canducci MongoDB Repository Core
 
-### ASP.NET MVC Core
 
-[![Canducci MongoDB Repository Core](http://i666.photobucket.com/albums/vv25/netdragoon/nosql_zpsefi6szxd.png)](https://www.nuget.org/packages/Canducci.MongoDB.Repository.Core/)
+[![Canducci MongoDB Repository Core](http://i1308.photobucket.com/albums/s610/maryjanexique/highres_99553512-840_zps6nldp8ue.jpg)](https://www.nuget.org/packages/Canducci.MongoDB.Repository.Core/)
 
 [![NuGet](https://img.shields.io/nuget/v/Canducci.MongoDB.Repository.Core.svg?style=plastic&label=version)](https://www.nuget.org/packages/Canducci.MongoDB.Repository.Core/)
 
-##Install Package (NUGET)
+## Install Package (NUGET)
 
 To install Canducci MongoDB Repository Core, run the following command in the [Package Manager Console](http://docs.nuget.org/consume/package-manager-console)
 

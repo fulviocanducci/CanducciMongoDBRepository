@@ -2,7 +2,7 @@
 {
     public interface IConfig
     {
-        string MongoConnectionString { get; set; }
-        string MongoDatabase { get; set; }
+        string MongoConnectionString { get; }
+        string MongoDatabase { get; }
     }
 }

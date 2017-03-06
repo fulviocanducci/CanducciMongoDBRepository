@@ -1,6 +1,5 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +32,9 @@ namespace Canducci.MongoDB.Contracts
         Task<IList<T>> AllAsync();
         Task<IList<T>> AllAsync(Expression<Func<T, bool>> filter);
         Task<IList<T>> AllAsync<Tkey>(Expression<Func<T, bool>> filter, Expression<Func<T, Tkey>> orderBy);
+
+        IList<T> List<Tkey>(Expression<Func<T, Tkey>> orderBy, Expression<Func<T, bool>> filter = null);
+        Task<IList<T>> ListAsync<Tkey>(Expression<Func<T, Tkey>> orderBy, Expression<Func<T, bool>> filter = null);
 
         bool Delete(Expression<Func<T, bool>> filter);
         Task<bool> DeleteAsync(Expression<Func<T, bool>> filter);

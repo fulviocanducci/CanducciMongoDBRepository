@@ -160,6 +160,26 @@ namespace Canducci.MongoDB.Contracts
         }
         #endregion
 
+        #region list
+
+        public IList<T> List<Tkey>(Expression<Func<T, Tkey>> orderBy, Expression<Func<T, bool>> filter = null)
+        {
+            IMongoQueryable<T> query = _collection.AsQueryable();
+            if (filter != null)
+                return query.Where(filter).OrderBy(orderBy).ToList();
+            return query.OrderBy(orderBy).ToList();
+        }
+
+        public async Task<IList<T>> ListAsync<Tkey>(Expression<Func<T, Tkey>> orderBy, Expression<Func<T, bool>> filter = null)
+        {
+            IMongoQueryable<T> query = _collection.AsQueryable();
+            if (filter != null)
+                return await query.Where(filter).OrderBy(orderBy).ToListAsync();
+            return await query.OrderBy(orderBy).ToListAsync();
+        }
+
+        #endregion
+
         #region count
 
         public long Count()

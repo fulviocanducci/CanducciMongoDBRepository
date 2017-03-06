@@ -1,11 +1,6 @@
 ﻿using Canducci.MongoDB.Cls.Models;
 using Canducci.MongoDB.Connection;
 using Canducci.MongoDB.Repository.Connection;
-using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Canducci.MongoDB.Cls
 {
@@ -13,10 +8,11 @@ namespace Canducci.MongoDB.Cls
     {
         public static void Main(string[] args)
         {
-            IConfig config = new Config();
+            IConfig config = new Config("mongodb://localhost:27017", "db");
             IConnect connect = new Connect(config);
-            RepositoryCreditImpl rep = new RepositoryCredit(connect);
+            RepositoryCreditImpl rep = new RepositoryCredit(connect);   
 
+            
             Credit model = new Credit();
             model.Name = "redeTV.com.br";
             rep.Add(model);
@@ -38,7 +34,7 @@ namespace Canducci.MongoDB.Cls
             //var r = rep.All(a => a.Name.Contains("o"), a => a.Name)
             //    .ToList();
 
-            foreach (var item in rep.All())
+            foreach (var item in rep.List(a => a.Name))
             {
                 System.Console.WriteLine($"{item.Id} - {item.Name}");
             }

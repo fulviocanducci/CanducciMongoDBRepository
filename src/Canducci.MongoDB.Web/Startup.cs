@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Canducci.MongoDB.Repository.Connection;
-using Canducci.MongoDB.Web.Models;
 using Web.Models;
 using Canducci.MongoDB.Connection;
 using System.Globalization;
@@ -47,8 +42,13 @@ namespace Canducci.MongoDB.Web
 
             // Add DI e IOC Container
             services.AddSingleton<IConfiguration>(Configuration);
+
+            // Add Repository MongoDB
+            // Config
             services.AddScoped<IConfig, Config>();
+            // Connect
             services.AddScoped<IConnect, Connect>();
+            // Repositories
             services.AddScoped<RepositoryPeopleImpl, RepositoryPeople>();
         }
 

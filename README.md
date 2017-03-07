@@ -1,5 +1,6 @@
 # Canducci MongoDB Repository Core
 
+
 [![Canducci MongoDB Repository Core](http://i1308.photobucket.com/albums/s610/maryjanexique/highres_99553512_zpssfgw2lhb.jpeg)](https://www.nuget.org/packages/Canducci.MongoDB.Repository.Core/)
 
 

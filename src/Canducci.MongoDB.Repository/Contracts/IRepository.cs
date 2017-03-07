@@ -1,12 +1,13 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Canducci.MongoDB.Contracts
+namespace Canducci.MongoDB.Repository.Contracts
 {
     public interface IRepository<T> : IDisposable
         where T : class, new()
@@ -21,7 +22,9 @@ namespace Canducci.MongoDB.Contracts
         Task<bool> EditAsync(Expression<Func<T, bool>> filter, T model);
 
         bool Update(Expression<Func<T, bool>> filter, UpdateDefinition<T> update);
+        bool UpdateAll(Expression<Func<T, bool>> filter, UpdateDefinition<T> update);
         Task<bool> UpdateAsync(Expression<Func<T, bool>> filter, UpdateDefinition<T> update);
+        Task<bool> UpdateAllAsync(Expression<Func<T, bool>> filter, UpdateDefinition<T> update);
 
         T Find(Expression<Func<T, bool>> filter);
         Task<T> FindAsync(Expression<Func<T, bool>> filter);
@@ -39,7 +42,7 @@ namespace Canducci.MongoDB.Contracts
         bool Delete(Expression<Func<T, bool>> filter);
         Task<bool> DeleteAsync(Expression<Func<T, bool>> filter);
 
-        IQueryable<T> Queryable();
+        IMongoQueryable<T> Query();
          
         ObjectId CreateObjectId(string value);
 

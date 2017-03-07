@@ -1,7 +1,8 @@
-﻿using Canducci.MongoDB.Connection;
-using Canducci.MongoDB.Contracts;
+﻿using MongoDB.Bson;
+using Canducci.MongoDB.Repository.Connection;
 using Canducci.MongoDB.Repository.MongoAttribute;
-using MongoDB.Bson;
+using Canducci.MongoDB.Repository.Contracts;
+
 namespace Canducci.MongoDB.Cls.Models
 {
     [MongoCollectionName("credit")]

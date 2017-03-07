@@ -1,5 +1,4 @@
-﻿using Canducci.MongoDB.Connection;
-using Canducci.MongoDB.Repository.MongoAttribute;
+﻿using Canducci.MongoDB.Repository.MongoAttribute;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
@@ -8,8 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using System.Reflection; 
-namespace Canducci.MongoDB.Contracts
+using System.Reflection;
+using Canducci.MongoDB.Repository.Connection;
+
+namespace Canducci.MongoDB.Repository.Contracts
 {
     public abstract class Repository<T> : IRepository<T>
         where T : class, new()
@@ -80,6 +81,14 @@ namespace Canducci.MongoDB.Contracts
                 .UpdateOne(filter, update)
                 .ModifiedCount > 0;
         }
+
+        public bool UpdateAll(Expression<Func<T, bool>> filter, UpdateDefinition<T> update)
+        {
+            return _collection
+               .UpdateMany(filter, update)
+               .ModifiedCount > 0;
+        }
+
         public async Task<bool> UpdateAsync(Expression<Func<T, bool>> filter, UpdateDefinition<T> update)
         {
             UpdateResult result = await _collection
@@ -87,10 +96,17 @@ namespace Canducci.MongoDB.Contracts
             return result.ModifiedCount > 0;
         }
 
+        public async Task<bool> UpdateAllAsync(Expression<Func<T, bool>> filter, UpdateDefinition<T> update)
+        {
+            UpdateResult result = await _collection
+                .UpdateManyAsync(filter, update);
+            return result.ModifiedCount > 0;
+        }
+
         #endregion
 
         #region find
-                
+
         public T Find(Expression<Func<T, bool>> filter)
         {
             return _collection
@@ -228,7 +244,7 @@ namespace Canducci.MongoDB.Contracts
 
         #region queryAble
 
-        public IQueryable<T> Queryable()
+        public IMongoQueryable<T> Query()
         {
             return _collection
                 .AsQueryable();

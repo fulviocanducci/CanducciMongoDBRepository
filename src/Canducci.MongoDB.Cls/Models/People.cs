@@ -5,7 +5,7 @@ using Canducci.MongoDB.Repository.MongoAttribute;
 using Canducci.MongoDB.Repository.Contracts;
 using Canducci.MongoDB.Repository.Connection;
 
-namespace Web.Models
+namespace Canducci.MongoDB.Cls.Models
 {   
     [MongoCollectionName("peoples")]       
     public sealed class People

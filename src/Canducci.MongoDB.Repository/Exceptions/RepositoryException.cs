@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Canducci.MongoDB.Exceptions
+namespace Canducci.MongoDB.Repository.Exceptions
 {
     public class RepositoryException : Exception
     {

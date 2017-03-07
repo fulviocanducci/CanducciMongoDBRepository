@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Web.Models;
 using MongoDB.Bson;
-using Canducci.MongoDB.Exceptions;
+using Canducci.MongoDB.Repository.Exceptions;
 namespace Canducci.MongoDB.Web.Controllers
 {
     public class PeoplesController : Controller

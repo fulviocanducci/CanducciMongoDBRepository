@@ -1,8 +1,6 @@
-﻿using Canducci.MongoDB.Repository.Connection;
-using MongoDB.Driver;
-using System;
-
-namespace Canducci.MongoDB.Connection
+﻿using MongoDB.Driver;
+using System;                                   
+namespace Canducci.MongoDB.Repository.Connection
 {        
     public class Connect : IDisposable, IConnect
     {

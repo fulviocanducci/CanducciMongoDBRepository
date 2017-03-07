@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Canducci.MongoDB.Repository.Connection;
 using Web.Models;
-using Canducci.MongoDB.Connection;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 

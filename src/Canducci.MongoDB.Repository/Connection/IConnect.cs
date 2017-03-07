@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 using System;
-namespace Canducci.MongoDB.Connection
+namespace Canducci.MongoDB.Repository.Connection
 {
     public interface IConnect : IDisposable
     {

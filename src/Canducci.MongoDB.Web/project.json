@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "BundlerMinifier.Core": "2.4.337",
-    "Canducci.MongoDB.Repository": "1.0.1-*",
+    "Canducci.MongoDB.Repository": "1.1.2-*",
     "Microsoft.ApplicationInsights.AspNetCore": "2.0.0",
     "Microsoft.AspNetCore.Diagnostics": "1.1.0",
     "Microsoft.AspNetCore.Mvc": "1.1.1",
@@ -19,7 +19,10 @@
     "Microsoft.Extensions.Logging.Console": "1.1.0",
     "Microsoft.Extensions.Logging.Debug": "1.1.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.0",
-    "Microsoft.NETCore.App": { "version": "1.1.0", "type": "platform"},
+    "Microsoft.NETCore.App": {
+      "version": "1.1.0",
+      "type": "platform"
+    },
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0",
     "MongoDB.Bson": "2.4.2",
     "MongoDB.Driver": "2.4.2",

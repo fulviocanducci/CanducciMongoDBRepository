@@ -1,6 +1,5 @@
 # Canducci MongoDB Repository Core
 
-
 [![Canducci MongoDB Repository Core](http://i1308.photobucket.com/albums/s610/maryjanexique/highres_99553512_zpssfgw2lhb.jpeg)](https://www.nuget.org/packages/Canducci.MongoDB.Repository.Core/)
 
 
@@ -54,8 +53,8 @@ using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Canducci.MongoDB.Repository.MongoAttribute;
-using Canducci.MongoDB.Contracts;
-using Canducci.MongoDB.Connection;
+using Canducci.MongoDB.Repository.Contracts;
+using Canducci.MongoDB.Repository.Connection;
 namespace Web.Models
 {
     [MongoCollectionName("peoples")]       
@@ -96,8 +95,8 @@ using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Canducci.MongoDB.Repository.MongoAttribute;
-using Canducci.MongoDB.Contracts;
-using Canducci.MongoDB.Connection;
+using Canducci.MongoDB.Repository.Contracts;
+using Canducci.MongoDB.Repository.Connection;
 namespace Web.Models
 {
     public abstract class RepositoryPeopleImpl :
@@ -126,7 +125,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Web.Models;
 using MongoDB.Bson;
-using Canducci.MongoDB.Exceptions;
+using Canducci.MongoDB.Repository.Exceptions;
 namespace Canducci.MongoDB.Web.Controllers
 {
     public class PeoplesController : Controller
